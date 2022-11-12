@@ -1,0 +1,37 @@
+body{
+    width: 89%;
+}
+
+.nationality{
+border: 1px solid;
+width: 560px;
+position: relative;
+left: 10%;
+bottom: 490px;
+padding: 15px;
+}
+.nationality-textbox{
+    width:30%
+}
+.service-options{
+    width:30%;
+    position:relative;
+    left: 55%;
+    bottom: 350px;
+}
+.mb-3{
+    width:30%
+}
+.all
+{
+    position: relative;
+    left: 12%;
+}
+.signup-btn{
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: xx-large;
+    position: relative;
+    left: 40%;
+    bottom: 400px;
+}
