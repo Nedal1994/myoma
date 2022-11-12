@@ -1,0 +1,21 @@
+.register-title{
+  text-align: center;
+}
+.form{
+  border: 1px solid;
+  padding: 20px;
+  width: 35%;
+  margin-left: 33%;
+  margin-top: 7%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#name1,#email1, #password1, #confirmpassword1{
+  width:90%;
+  margin-left: 7%;
+}
+.mb-3{
+  text-align: center;
+}
+.button1{
+  margin-left: 33%;
+  width: 40%;}
