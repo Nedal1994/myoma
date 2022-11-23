@@ -1,5 +1,5 @@
 import React from 'react'
-import '../components/css/Services.css'
+import '../Services/Services.css'
 import { BsTools, BsWrench } from "react-icons/bs";
 import { MdElectricalServices, MdElectricCar ,MdCarpenter} from "react-icons/md";
 import { GiPaintRoller, GiSewingMachine } from "react-icons/gi";
