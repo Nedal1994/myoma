@@ -12,31 +12,59 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store';
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+ function SignIn() 
+ {
+  const dispatch = useDispatch()
+
+  const history = useNavigate()
+
+  const [inputs, setInputs] = useState({
+    email:'',
+    password:''
+  })
+
+
+  const handleChange = (e) =>{
+    setInputs(prev=>({
+      ...prev,
+      [e.target.name]:e.target.value
+    })
+    )
+  }
+
+
+  const sendRequest = async () =>{
+    const res = axios.post('http://localhost:4000/api/login',{
+      email: inputs.email,
+      password: inputs.password
+    })
+    .catch(err => console.log(err))
+
+    const data = await res.data
+
+    return data
+  }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Send HTTP Request
+    sendRequest()
+    .then(()=>dispatch(authActions.login()))
+    .then(()=>history('/user'))
   };
+
+
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,10 +81,13 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
+         
           <Typography component="h1" variant="h5">
             Sign in
+          
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            
             <TextField
               margin="normal"
               required
@@ -67,6 +98,8 @@ export default function SignIn() {
               autoComplete="email"
               autoFocus
             />
+
+
             <TextField
               margin="normal"
               required
@@ -77,10 +110,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
@@ -103,8 +133,16 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </ThemeProvider>
   );
 }
+
+export default SignIn

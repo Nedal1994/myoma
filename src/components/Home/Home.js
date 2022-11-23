@@ -1,8 +1,8 @@
 import React from 'react'
-import '../components/css/Home.css'
-import About from '../components/About'
-import Services from '../components/Services'
-import Contact from '../components/Contact'
+import '../Home/Home.css'
+import About from '../About'
+import Services from '../Services/Services'
+import Contact from '../Contact'
 
 function Home() {
   return (
